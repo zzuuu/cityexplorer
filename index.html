@@ -32,7 +32,7 @@
 	<div data-role="content" >	
 		<div data-role="controlgroup" data-type="horizontal" style="margin-left: auto; margin-right: auto; width: 100%; text-align: center;">
 			<a href="#newroute" data-role="button">New Route</a>
-			<a href="#popularroutes" data-role="button">Popular Routes</a>
+			<a href="#popular_routes" data-role="button">Popular Routes</a>
 		</div>
 		
 		<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
@@ -362,6 +362,57 @@
 	</div><!-- /content -->
 	
 </div><!-- /page route_finished -->
+
+<!-- Start of page: #popular_routes -->
+<div data-role="page" id="popular_routes" data-theme="a">
+	
+	<div data-role="header" data-position="inline">
+		<a href="#add_filters" class="ui-btn-left" data-rel="back">Back</a>
+		<h1><a href="#home" data-icon="home" data-inline="true" data-role="button" data-iconpos="notext">Home</a> City Explorer</h1>
+		<a href="#me" class="ui-btn-right">Me</a>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<h2>Popular routes</h2>
+		
+		<div data-role="navbar" id="navbar_filter">
+			<ul>
+				<li><a href="#" data-tab-class="tab1_filter">View on map</a></li>
+				<li><a href="#" class="ui-btn-active" data-tab-class="tab2_filter">View as list</a></li>
+			</ul>
+		</div>
+		<div class="tab-content">
+			<div class="tab1_filter ui-screen-hidden">
+				<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+					<div id="map_canvas_route_search_results_filtered" style="height:300px;"></div>
+				</div>
+				<p>Click on a route to see details</p>
+			</div>
+			<div class="tab2_filter">
+				<ul data-role="listview" data-inset="true">
+					<li>
+						<a href="#route_overview">
+							<h3>Route 1</h3>
+							<p>1.9 kilometres, park, farmers market, quiet streets</p>
+							<p class="ui-li-aside">Overview</p>
+						</a>
+					</li>
+					<li>
+						<a href="#route_overview">
+							<h3>Route 2</h3>
+							<p>2.1 kilometres, river walk, turkish restaurant</p>
+							<p class="ui-li-aside">Overview</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<a href="#add_filters" data-role="button">Edit filters</a>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page popular_routes -->
 
 </body>
 </html>
