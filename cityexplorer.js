@@ -57,6 +57,25 @@ $('#route_search_results_filtered').live('pageinit', function() {
 	});
 });
 
+$('#route_progress').live('pageinit', function() {
+	$('#map_canvas_route_progress').gmap().bind('init', function(evt, map) {
+		$('#map_canvas_route_progress').gmap('getCurrentPosition', function(position, status) {
+			if ( status === 'OK' ) {
+				var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				$('#map_canvas_route_progress').gmap('addMarker', {'position': clientPosition, 'bounds': true});
+				$('#map_canvas_route_progress').gmap('addShape', 'Circle', { 
+					'strokeWeight': 0, 
+					'fillColor': "#008595", 
+					'fillOpacity': 0.25, 
+					'center': clientPosition, 
+					'radius': 15, 
+					'clickable': false 
+				});
+			}
+		});   
+	});
+});
+
 ////////////////////////////////////////////////////////////
 
 var prevSelection = "tab1";

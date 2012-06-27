@@ -50,6 +50,33 @@
 	
 </div><!-- /page home -->
 
+<!-- Start of page: #me -->
+<div data-role="page" id="me" data-theme="a">
+	
+	<div data-role="header" data-position="inline"> 
+		<h1><a href="#home" data-icon="home" data-inline="true" data-role="button" data-iconpos="notext">Home</a> City Explorer</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >
+		<h1>Me</h1>
+	
+		<h2>Weekly score</h2>
+		
+		<p>235 points</p>
+		<p>12.1 kilometres</p>
+		<p>4% more of your neighbourhood</p>
+		<p>0.12% more of your city</p>
+		
+		<h2>Total score</h2>
+		
+		<p>2345 points</p>
+		<p>127.1 kilometres</p>
+		<p>12.6% of your neighbourhood</p>
+		<p>2.3% of your city</p>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page me -->
 
 <!-- Start of page: #newroute -->
 <div data-role="page" id="newroute" data-theme="a">
@@ -130,23 +157,23 @@
 			<div class="tab2 ui-screen-hidden">
 				<ul data-role="listview" data-inset="true">
 					<li>
-						<a href="index.html">
+						<a href="#">
 							<h3>Route 1</h3>
-							<p>1.9 miles, park, farmers market, quiet streets</p>
+							<p>1.9 kilometres, park, farmers market, quiet streets</p>
 							<p class="ui-li-aside">Overview</p>
 						</a>
 					</li>
 					<li>
-						<a href="index.html">
+						<a href="#">
 							<h3>Route 2</h3>
-							<p>2.1 miles, river walk, turkish restaurant</p>
+							<p>2.1 kilometres, river walk, turkish restaurant</p>
 							<p class="ui-li-aside">Overview</p>
 						</a>
 					</li>
 					<li>
-						<a href="index.html">
+						<a href="#">
 							<h3>Route 3</h3>
-							<p>2.4 miles, quiet streets, antique market</p>
+							<p>2.4 kilometres, quiet streets, antique market</p>
 							<p class="ui-li-aside">Overview</p>
 						</a>
 					</li>
@@ -209,7 +236,7 @@
 <div data-role="page" id="route_search_results_filtered" data-theme="a">
 	
 	<div data-role="header" data-position="inline">
-		<a href="#newroute" class="ui-btn-left" data-rel="back">Back</a>
+		<a href="#add_filters" class="ui-btn-left" data-rel="back">Back</a>
 		<h1><a href="#home" data-icon="home" data-inline="true" data-role="button" data-iconpos="notext">Home</a> City Explorer</h1>
 		<a href="#me" class="ui-btn-right">Me</a>
 	</div><!-- /header -->
@@ -233,16 +260,16 @@
 			<div class="tab2_filter">
 				<ul data-role="listview" data-inset="true">
 					<li>
-						<a href="index.html">
+						<a href="#route_overview">
 							<h3>Route 1</h3>
-							<p>1.9 miles, park, farmers market, quiet streets</p>
+							<p>1.9 kilometres, park, farmers market, quiet streets</p>
 							<p class="ui-li-aside">Overview</p>
 						</a>
 					</li>
 					<li>
-						<a href="index.html">
+						<a href="#route_overview">
 							<h3>Route 2</h3>
-							<p>2.1 miles, river walk, turkish restaurant</p>
+							<p>2.1 kilometres, river walk, turkish restaurant</p>
 							<p class="ui-li-aside">Overview</p>
 						</a>
 					</li>
@@ -255,6 +282,86 @@
 	</div><!-- /content -->
 	
 </div><!-- /page route_search_results_filtered -->
+
+<!-- Start of page: #route_overview -->
+<div data-role="page" id="route_overview" data-theme="a">
+	
+	<div data-role="header" data-position="inline"> 
+		<a href="#route_search_results_filtered" class="ui-btn-left" data-rel="back">Back</a>
+		<h1><a href="#home" data-icon="home" data-inline="true" data-role="button" data-iconpos="notext">Home</a> City Explorer</h1>
+		<a href="#me" class="ui-btn-right">Me</a>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<h2>Your route overview</h2>
+		
+		<p>Length: 2.1 kilometres</p>
+		<p>2% more of your neighbourhood</p>
+		<p>0.012% more of your city</p>
+		
+		<p>river walk, turkish restaurant</p>
+		
+		<a href="#route_progress" data-role="button">Start</a>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page route_overview -->
+
+<!-- Start of page: #route_progress -->
+<div data-role="page" id="route_progress" data-theme="a">
+	
+	<div data-role="header" data-position="inline"> 
+		<h1><a href="#home" data-icon="home" data-inline="true" data-role="button" data-iconpos="notext">Home</a> City Explorer</h1>
+		<a href="#me" class="ui-btn-right">Me</a>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<h2>Completing a route</h2>
+		
+		<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+			<div id="map_canvas_route_progress" style="height:300px;"></div>
+		</div>
+		<p>You completed 23% so far</p>
+		
+		<select name="slider_pause" id="toggle_pause" data-role="slider">
+			<option value="off">Pause</option>
+			<option value="on">Resume</option>
+		</select> 
+		
+		<a href="#route_overview" data-role="button">Cancel</a>
+		
+		<a href="#route_finished" data-role="button" data-theme="b">Finish</a>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page route_progress -->
+
+<!-- Start of page: #route_finished -->
+<div data-role="page" id="route_finished" data-theme="a">
+	
+	<div data-role="header" data-position="inline"> 
+		<h1><a href="#home" data-icon="home" data-inline="true" data-role="button" data-iconpos="notext">Home</a> City Explorer</h1>
+		<a href="#me" class="ui-btn-right">Me</a>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<h2>Well done</h2>
+		
+		<p>166 points</p>
+		<p>2.1 kilometres</p>
+		<p>2% more of your neighbourhood</p>
+		<p>0.012% more of your city</p>
+		
+		<h2>Rate this route</h2>
+		<div data-role="controlgroup" data-type="horizontal" >
+			<a href="#" data-role="button" data-icon="star" data-iconpos="notext">Poor</a>
+			<a href="#" data-role="button" data-icon="star" data-iconpos="notext">OK</a>
+			<a href="#" data-role="button" data-icon="star" data-iconpos="notext">Amazing</a>
+		</div>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page route_finished -->
 
 </body>
 </html>
