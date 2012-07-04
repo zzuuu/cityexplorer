@@ -68,6 +68,8 @@ $("#navbar ul li").live("click",function(){
 var prevSelectionFilter = "tab2_filter";
 $("#navbar_filter ul li").live("click",function(){
 	var newSelection = $(this).children("a").attr("data-tab-class");
+	$("."+prevSelectionFilter).addClass("ui-screen-hidden");
+	$("."+newSelection).removeClass("ui-screen-hidden");
 	if(newSelection == "tab1_filter") {
 		$('#map_canvas_route_search_results_filtered').gmap(mapCenter);
 		$('#map_canvas_route_search_results_filtered').gmap('option', 'zoom', mapZoom);
@@ -89,7 +91,5 @@ $("#navbar_filter ul li").live("click",function(){
 			function(result, status) {}
 		);
 	}
-	$("."+prevSelectionFilter).addClass("ui-screen-hidden");
-	$("."+newSelection).removeClass("ui-screen-hidden");
 	prevSelectionFilter = newSelection;
 });
