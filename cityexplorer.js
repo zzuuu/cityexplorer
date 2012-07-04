@@ -1,14 +1,9 @@
 ////////////////////////////////////////////////////////////
 
-// https://maps.google.co.uk/maps?q=150+Brick+Lane,+London&hl=en&ll=51.521428,-0.071754&spn=0.007797,0.018926&sll=51.521548,-0.071325&sspn=0.007797,0.018926&hnear=150+Brick+Ln,+London+E1+6RU,+United+Kingdom&t=m&z=16
-
 var mapCenterCoordinates = '51.521428,-0.071754';
 var mapCenter = { 'center': mapCenterCoordinates };
 var mapCenterMarker = { /*id:'m_1',*/ 'position': mapCenterCoordinates }
 var mapZoom = 16;
-var mapDirectionsWithTurkishRestaurant;
-var mapDirectionsWithFarm;
-var mapDirectionsWithAntique;
 
 $( document ).delegate("#home", "pageshow", function() {
 	$('#map_canvas_home').gmap(mapCenter);
