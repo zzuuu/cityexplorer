@@ -1,84 +1,59 @@
 ////////////////////////////////////////////////////////////
 
-// https://maps.google.co.uk/maps?q=150+Brick+Lane,+London&hl=en&ll=51.521428,-0.071754&spn=0.007797,0.018926&sll=51.521548,-0.071325&sspn=0.007797,0.018926&hnear=150+Brick+Ln,+London+E1+6RU,+United+Kingdom&t=m&z=16
+var mapCenterCoordinates = '51.521428,-0.071754';
+var mapCenter = { 'center': mapCenterCoordinates };
+var mapCenterMarker = { /*id:'m_1',*/ 'position': mapCenterCoordinates }
+var mapZoom = 16;
 
-$('#home').live('pageinit', function() {
-	$('#map_canvas_home').gmap({ 'center': '51.521428,-0.071754' });
-	$('#map_canvas_home').gmap('option', 'zoom', 16);
-	$('#map_canvas_home').gmap('addMarker', { /*id:'m_1',*/ 'position': '51.521428,-0.071754' } );
-	$('#map_canvas_home').gmap('displayDirections',
+$( document ).delegate("#home", "pageshow", function() {
+	$('#map_canvas_home').gmap(mapCenter);
+	$('#map_canvas_home').gmap('option', 'zoom', mapZoom);
+	$('#map_canvas_home').gmap('addMarker', mapCenterMarker );
+});
+
+$( document ).delegate("#route_search_results", "pageshow", function() {
+	$('#map_canvas_route_search_results').gmap(mapCenter);
+	$('#map_canvas_route_search_results').gmap('option', 'zoom', mapZoom);
+	$('#map_canvas_route_search_results').gmap('addMarker', mapCenterMarker );
+	$('#map_canvas_route_search_results').gmap('displayDirections',
 		{
 			'origin': '51.521428,-0.071754',
 			'destination': '51.521428,-0.071754',
-			//'waypoints': ['51.621428,-0.071754'],
+			'waypoints': [
+				{ "location": '51.522483,-0.070157' },
+				{ "location": 'Weavers Community Space 15 Kelsey St, London, UK E2 6HD' },
+				{ "location": 'Tas Firin Restaurant, 160 Bethnal Green Road, City of London, London, Greater London E2 6DG' },
+				{ "location": 'Elemental - Antiques, 67 Brushfield Street, City of London, London, Greater London E1 6AA' },
+				{ "location": '51.521849,-0.067776' }
+			],
 			'travelMode': google.maps.DirectionsTravelMode.WALKING
 		},
-		{
-			'panel': document.getElementById('panel')
-		},
-		function(result, status) {
-			if ( status === 'OK' ) {
-				console.log(result);
-			}
-	});
+		{},
+		function(result, status) {}
+	);
 });
 
-// $('#route_search_results').live('pageinit', function() {
-// 	$('#map_canvas_route_search_results').gmap().bind('init', function(evt, map) {
-// 		$('#map_canvas_route_search_results').gmap('getCurrentPosition', function(position, status) {
-// 			if ( status === 'OK' ) {
-// 				var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-// 				$('#map_canvas_route_search_results').gmap('addMarker', {'position': clientPosition, 'bounds': true});
-// 				$('#map_canvas_route_search_results').gmap('addShape', 'Circle', { 
-// 					'strokeWeight': 0, 
-// 					'fillColor': "#008595", 
-// 					'fillOpacity': 0.25, 
-// 					'center': clientPosition, 
-// 					'radius': 15, 
-// 					'clickable': false 
-// 				});
-// 			}
-// 		});   
-// 	});
-// });
-// 
-// $('#route_search_results_filtered').live('pageinit', function() {
-// 	$('#map_canvas_route_search_results_filtered').gmap().bind('init', function(evt, map) {
-// 		$('#map_canvas_route_search_results_filtered').gmap('getCurrentPosition', function(position, status) {
-// 			if ( status === 'OK' ) {
-// 				var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-// 				$('#map_canvas_route_search_results_filtered').gmap('addMarker', {'position': clientPosition, 'bounds': true});
-// 				$('#map_canvas_route_search_results_filtered').gmap('addShape', 'Circle', { 
-// 					'strokeWeight': 0, 
-// 					'fillColor': "#008595", 
-// 					'fillOpacity': 0.25, 
-// 					'center': clientPosition, 
-// 					'radius': 15, 
-// 					'clickable': false 
-// 				});
-// 			}
-// 		});   
-// 	});
-// });
-// 
-// $('#route_progress').live('pageinit', function() {
-// 	$('#map_canvas_route_progress').gmap().bind('init', function(evt, map) {
-// 		$('#map_canvas_route_progress').gmap('getCurrentPosition', function(position, status) {
-// 			if ( status === 'OK' ) {
-// 				var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-// 				$('#map_canvas_route_progress').gmap('addMarker', {'position': clientPosition, 'bounds': true});
-// 				$('#map_canvas_route_progress').gmap('addShape', 'Circle', { 
-// 					'strokeWeight': 0, 
-// 					'fillColor': "#008595", 
-// 					'fillOpacity': 0.25, 
-// 					'center': clientPosition, 
-// 					'radius': 15, 
-// 					'clickable': false 
-// 				});
-// 			}
-// 		});   
-// 	});
-// });
+$( document ).delegate("#route_progress", "pageshow", function() {
+	$('#map_canvas_route_progress').gmap(mapCenter);
+	$('#map_canvas_route_progress').gmap('option', 'zoom', mapZoom);
+	$('#map_canvas_route_progress').gmap('addMarker', mapCenterMarker );
+	$('#map_canvas_route_progress').gmap('displayDirections',
+		{
+			'origin': '51.521428,-0.071754',
+			'destination': '51.521428,-0.071754',
+			'waypoints': [
+				{ "location": '51.522483,-0.070157' },
+				{ "location": 'Weavers Community Space 15 Kelsey St, London, UK E2 6HD' },
+				{ "location": 'Tas Firin Restaurant, 160 Bethnal Green Road, City of London, London, Greater London E2 6DG' },
+				{ "location": 'Elemental - Antiques, 67 Brushfield Street, City of London, London, Greater London E1 6AA' },
+				{ "location": '51.521849,-0.067776' }
+			],
+			'travelMode': google.maps.DirectionsTravelMode.WALKING
+		},
+		{},
+		function(result, status) {}
+	);
+});
 
 ////////////////////////////////////////////////////////////
 
@@ -95,5 +70,26 @@ $("#navbar_filter ul li").live("click",function(){
 	var newSelection = $(this).children("a").attr("data-tab-class");
 	$("."+prevSelectionFilter).addClass("ui-screen-hidden");
 	$("."+newSelection).removeClass("ui-screen-hidden");
+	if(newSelection == "tab1_filter") {
+		$('#map_canvas_route_search_results_filtered').gmap(mapCenter);
+		$('#map_canvas_route_search_results_filtered').gmap('option', 'zoom', mapZoom);
+		$('#map_canvas_route_search_results_filtered').gmap('addMarker', mapCenterMarker );
+		$('#map_canvas_route_search_results_filtered').gmap('displayDirections',
+			{
+				'origin': '51.521428,-0.071754',
+				'destination': '51.521428,-0.071754',
+				'waypoints': [
+					{ "location": '51.522483,-0.070157' },
+					{ "location": 'Weavers Community Space 15 Kelsey St, London, UK E2 6HD' },
+					{ "location": 'Tas Firin Restaurant, 160 Bethnal Green Road, City of London, London, Greater London E2 6DG' },
+					{ "location": 'Elemental - Antiques, 67 Brushfield Street, City of London, London, Greater London E1 6AA' },
+					{ "location": '51.521849,-0.067776' }
+				],
+				'travelMode': google.maps.DirectionsTravelMode.WALKING
+			},
+			{},
+			function(result, status) {}
+		);
+	}
 	prevSelectionFilter = newSelection;
 });
