@@ -34,11 +34,8 @@ $( document ).delegate("#route_search_results", "pageshow", function() {
 			'travelMode': google.maps.DirectionsTravelMode.WALKING
 		},
 		{},
-		function(result, status) {
-			if ( status === 'OK' ) {
-				console.log(result);
-			}
-	});
+		function(result, status) {}
+	);
 });
 
 $( document ).delegate("#route_progress", "pageshow", function() {
@@ -59,11 +56,8 @@ $( document ).delegate("#route_progress", "pageshow", function() {
 			'travelMode': google.maps.DirectionsTravelMode.WALKING
 		},
 		{},
-		function(result, status) {
-			if ( status === 'OK' ) {
-				console.log(result);
-			}
-	});
+		function(result, status) {}
+	);
 });
 
 ////////////////////////////////////////////////////////////
@@ -97,11 +91,8 @@ $("#navbar_filter ul li").live("click",function(){
 				'travelMode': google.maps.DirectionsTravelMode.WALKING
 			},
 			{},
-			function(result, status) {
-				if ( status === 'OK' ) {
-					console.log(result);
-				}
-		});
+			function(result, status) {}
+		);
 	}
 	$("."+prevSelectionFilter).addClass("ui-screen-hidden");
 	$("."+newSelection).removeClass("ui-screen-hidden");
