@@ -34,9 +34,7 @@ $( document ).delegate("#route_search_results", "pageshow", function() {
 });
 
 $( document ).delegate("#route_progress", "pageshow", function() {
-	$('#map_canvas_route_progress').gmap(mapCenter);
-	$('#map_canvas_route_progress').gmap('option', 'zoom', mapZoom);
-	$('#map_canvas_route_progress').gmap('addMarker', mapCenterMarker );
+	$('#map_canvas_route_progress').gmap('addMarker', { 'position': '51.52299,-0.066175' } );
 	$('#map_canvas_route_progress').gmap('displayDirections',
 		{
 			'origin': '51.521428,-0.071754',
@@ -51,8 +49,18 @@ $( document ).delegate("#route_progress", "pageshow", function() {
 			'travelMode': google.maps.DirectionsTravelMode.WALKING
 		},
 		{},
-		function(result, status) {}
+		function(result, status) {
+			window.setTimeout(
+				function() {
+					$('#map_canvas_route_progress').gmap('option', 'zoom', 17);
+					$('#map_canvas_route_progress').gmap('option', 'center', new google.maps.LatLng(51.52299, -0.066175));
+				},
+				1
+			);
+			
+		}
 	);
+	
 });
 
 ////////////////////////////////////////////////////////////
