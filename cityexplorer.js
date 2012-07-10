@@ -101,3 +101,32 @@ $("#navbar_filter ul li").live("click",function(){
 	}
 	prevSelectionFilter = newSelection;
 });
+
+var prevSelectionPopular = "tab2_popular";
+$("#navbar_popular ul li").live("click",function(){
+	var newSelection = $(this).children("a").attr("data-tab-class");
+	$("."+prevSelectionPopular).addClass("ui-screen-hidden");
+	$("."+newSelection).removeClass("ui-screen-hidden");
+	if(newSelection == "tab1_popular") {
+		$('#map_canvas_popular').gmap(mapCenter);
+		$('#map_canvas_popular').gmap('option', 'zoom', mapZoom);
+		$('#map_canvas_popular').gmap('addMarker', mapCenterMarker );
+		$('#map_canvas_popular').gmap('displayDirections',
+			{
+				'origin': '51.521428,-0.071754',
+				'destination': '51.521428,-0.071754',
+				'waypoints': [
+					{ "location": '51.522483,-0.070157' },
+					{ "location": 'Weavers Community Space 15 Kelsey St, London, UK E2 6HD' },
+					{ "location": 'Tas Firin Restaurant, 160 Bethnal Green Road, City of London, London, Greater London E2 6DG' },
+					{ "location": 'Elemental - Antiques, 67 Brushfield Street, City of London, London, Greater London E1 6AA' },
+					{ "location": '51.521849,-0.067776' }
+				],
+				'travelMode': google.maps.DirectionsTravelMode.WALKING
+			},
+			{},
+			function(result, status) {}
+		);
+	}
+	prevSelectionPopular = newSelection;
+});
